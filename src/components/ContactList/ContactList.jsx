@@ -4,9 +4,8 @@ import { AddList } from './ContactList.styled';
 import { Record } from './ContactList.styled';
 import { ContactUser } from './ContactList.styled';
 
-function ContactList({ contacts, onDelete }) {
-  return (
-    <AddList>
+const ContactList = ({ contacts, onDelete }) => (
+  <AddList>
       {contacts.map(({ id, name, number }) => (
         <Record key={id}>
           <ContactUser>
@@ -19,7 +18,6 @@ function ContactList({ contacts, onDelete }) {
       ))}
     </AddList>
   );
-}
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(

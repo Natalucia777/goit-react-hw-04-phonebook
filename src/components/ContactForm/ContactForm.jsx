@@ -8,8 +8,8 @@ import { FormButton } from './ContactForm.styled';
 import PropTypes from 'prop-types';
 
 const valuesForm = {
-  name: '0',
-  number: '0',
+  name: '',
+  number: '',
 };
 const ContactForm = ({ onSubmit }) => {
   const handleSubmit = (values, action) => {
