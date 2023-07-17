@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { StForm } from './ContactForm.styled';
 import { StLabel } from './ContactForm.styled';
@@ -12,7 +12,7 @@ const valuesForm = {
   number: '0',
 };
 const ContactForm = ({ onSubmit }) => {
-    onst handleSubmit = (values, action) => {
+  const handleSubmit = (values, action) => {
     onSubmit(values);
     action.resetForm();
   };

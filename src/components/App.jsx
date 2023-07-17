@@ -58,7 +58,7 @@ const removeContact = todoId => {
   setContacts(prevState => prevState.filter(contact => contact.id !== todoId));
   };
 //    const { filter, contacts } = this.state;
-    const filterContact = this.visiblContacts();
+  //const filterContact = visiblContacts();
     return (
     <div>
         <h1>
@@ -74,7 +74,7 @@ const removeContact = todoId => {
         <Filter value={filter} onFilterChange={filterChange} />
           {contacts.length ? (
             <ContactList
-              contacts={filterContact}
+              contacts={visiblContacts}
               onDelete={removeContact} />
           ) : (
             <TitleContacts>
