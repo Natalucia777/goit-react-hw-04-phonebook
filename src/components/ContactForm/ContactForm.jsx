@@ -70,7 +70,6 @@ const ContactForm = ({ onSubmit }) => {
   );
 };
 
-
 ContactForm.propTypes = {
   handleSubmit: PropTypes.func,
 };

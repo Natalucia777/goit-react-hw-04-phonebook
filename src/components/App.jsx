@@ -6,12 +6,6 @@ import shortid from 'shortid';
 import { AllContacts } from './App.styled';
 import { TitleContacts } from './App.styled';
 
-//   const defaultContacts = [
-//     {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//     {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-//     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-//     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-// ];
 const LS_KEY = 'contacts'; 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -30,31 +24,31 @@ useEffect(() => {
 
   const addContact = (name, number) => {
     const normalizedName = name.toLowerCase();
-      let isAdded = false;
+    let isAdded = false;
     contacts.forEach(e => {
       if (e.name.toLowerCase() === normalizedName) {
         alert(`${name} is already in contacts`);
         isAdded = true;
       }
     });
-      if (isAdded) {
+    if (isAdded) {
       return;
+    } else {
+      const contact = {
+        id: shortid.generate(),
+        name: name,
+        number: number,
+      };
+      setContacts(prevContacts => [contact, ...prevContacts]);
     }
-        const contact = {
-      id: shortid.generate(),
-      name: name,
-      number: number,
-    };
-    setContacts(prevContacts => [contact, ...prevContacts]);
   }
 
 const filterChange = e => {
-    return setFilter(e.target.value.trim());
+    return setFilter(e.currentTarget.value);
   };
     
 const visiblContacts = (filter, contacts) => {
-   // const { filter, contacts } = this.state;
-  const normalizedFilter = filter.toLowerCase();
+   const normalizedFilter = filter.toLowerCase();
   if (filter) {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
@@ -68,7 +62,6 @@ const removeContact = todoId => {
   setContacts(prevState => prevState.filter(contact => contact.id !== todoId));
   };
   
-  //const filterContact = visiblContacts();
   return (
     <div>
         <h1>
@@ -84,7 +77,7 @@ const removeContact = todoId => {
         <Filter value={filter} onChange={filterChange} />
           {contacts.length ? (
             <ContactList
-              contacts={visiblContacts}
+              flContacts={visiblContacts(filter, contacts)}
               onDelete={removeContact} />
           ) : (
             <TitleContacts>
