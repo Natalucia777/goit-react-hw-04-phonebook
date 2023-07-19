@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Form, Field } from 'formik';
+//import { Form, Field } from 'formik';
 
-export const StForm = styled(Form)`
+export const StForm = styled.form`
 background-color: rgb(2, 48, 85);
   display: flex;
   justify-content: center;
@@ -20,11 +20,11 @@ export const StLabel = styled.label`
   }
 `;
 
-export const FieldName = styled(Field)`
+export const FieldName = styled.input`
   margin-left: 28px;
 `;
 
-export const FieldNumber = styled(Field)`
+export const FieldNumber = styled.input`
   margin-left: 10px;
 `;
 

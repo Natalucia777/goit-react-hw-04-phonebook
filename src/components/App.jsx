@@ -21,7 +21,8 @@ useEffect(() => {
       const parsedContacts = JSON.parse(localStorage.getItem(LS_KEY));
       setContacts(parsedContacts);
       return;
-    }}, []);
+  }
+}, []);
 
   useEffect(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(contacts));
@@ -44,7 +45,6 @@ useEffect(() => {
       name: name,
       number: number,
     };
-
     setContacts(prevContacts => [contact, ...prevContacts]);
   }
 
@@ -54,8 +54,8 @@ const filterChange = e => {
     
 const visiblContacts = (filter, contacts) => {
    // const { filter, contacts } = this.state;
+  const normalizedFilter = filter.toLowerCase();
   if (filter) {
-    const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -67,9 +67,9 @@ const visiblContacts = (filter, contacts) => {
 const removeContact = todoId => {
   setContacts(prevState => prevState.filter(contact => contact.id !== todoId));
   };
-//    const { filter, contacts } = this.state;
+  
   //const filterContact = visiblContacts();
-    return (
+  return (
     <div>
         <h1>
           Phonebook
@@ -81,7 +81,7 @@ const removeContact = todoId => {
         <AllContacts>
           All contacts: {contacts.length}
         </AllContacts>
-        <Filter value={filter} onFilterChange={filterChange} />
+        <Filter value={filter} onChange={filterChange} />
           {contacts.length ? (
             <ContactList
               contacts={visiblContacts}
